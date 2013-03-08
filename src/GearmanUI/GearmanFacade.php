@@ -27,6 +27,11 @@ class GearmanFacade
     }
 
 
+    /**
+     * Fetch status, worker and version information from Gearman servers
+     *
+     * @return array
+     */
     public function getServersInfo() {
         $info = array();
 
@@ -38,10 +43,16 @@ class GearmanFacade
     }
 
 
+    /**
+     * Get data from Gearman Server.
+     *
+     * @param $server
+     * @return mixed
+     */
     public function getServerInfo($server) {
         $managerFactory = $this->getManagerFactory();
 
-        try { // Open to the correction
+        try { // Try to open to the correction
             $manager = $managerFactory($server['addr']);
             $server['up'] = true;
         }
@@ -66,6 +77,14 @@ class GearmanFacade
     }
 
 
+    /**
+     * Log errors.
+     *
+     * @param \Exception $e
+     * @param $serverName
+     * @param $type
+     * @return string
+     */
     protected function serverErrorHandler(\Exception $e, $serverName, $type) {
 
         $errorMessage = "Error in server " . $serverName . ': ' . $e->getMessage();

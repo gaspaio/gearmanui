@@ -1,6 +1,6 @@
 .idea
 composer.lock
 composer.phar
-app/logs
+app/logs/gearmanui.log
 app/config/gearmanui.yml
 vendor/
