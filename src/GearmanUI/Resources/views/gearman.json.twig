@@ -1,0 +1,50 @@
+[
+    {
+        "addr": "127.0.0.1:4370",
+        "name": "Server 1",
+        "up": true,
+        "version": "1.2.3",
+        "status": {
+            "fn1": {"in_queue": 56, "jobs_running": 0, "capable_workers": 7},
+            "fn2": {"in_queue": 23, "jobs_running": 5, "capable_workers": 3},
+            "fn3": {"in_queue": 43, "jobs_running": 9, "capable_workers": 4},
+            "fn4": {"in_queue": 53, "jobs_running": 4, "capable_workers": 1},
+            "fn5": {"in_queue": 78, "jobs_running": 3, "capable_workers": 2},
+            "fn6": {"in_queue": 1, "jobs_running": 1, "capable_workers": 3},
+            "fn7": {"in_queue": 3, "jobs_running": 12, "capable_workers": 8}
+        },
+        "workers": [
+            {"id": 32, "fd": 12, "ip": "123.212.213.90", "abilities": ["Fn3", "Fn7", "Fn4", "Fn6"]},
+            {"id": 34, "fd": 20, "ip": "123.212.213.91", "abilities": ["Fn1", "Fn2", "Fn3", "Fn4"]},
+            {"id": 38, "fd": 23, "ip": "123.212.213.92", "abilities": ["Fn5", "Fn7", "Fn6", "Fn8"]},
+            {"id": 39, "fd": 43, "ip": "123.212.213.93", "abilities": ["Fn1", "Fn2", "Fn4", "Fn6"]},
+            {"id": 33, "fd": 13, "ip": "123.212.213.94", "abilities": ["Fn6", "Fn5", "Fn4", "Fn6"]},
+            {"id": 35, "fd": 65, "ip": "123.212.213.95", "abilities": ["Fn9", "Fn7", "Fn2", "Fn8"]}
+        ]
+    },
+    {
+        "addr": "192.168.1.67:9765",
+        "name": "Server 2",
+        "up": true,
+        "version": "1.2.3",
+        "status": {
+            "fn1": {"in_queue": 4, "jobs_running": 0, "capable_workers": 7},
+            "fn2": {"in_queue": 8, "jobs_running": 5, "capable_workers": 3},
+            "fn3": {"in_queue": 3, "jobs_running": 9, "capable_workers": 4},
+            "fn4": {"in_queue": 9, "jobs_running": 4, "capable_workers": 1},
+            "fn5": {"in_queue": 1, "jobs_running": 3, "capable_workers": 2}
+        },
+        "workers": [
+            {"id": 32, "fd": 12, "ip": "123.212.213.85", "abilities": ["Fn3", "Fn7", "Fn4", "Fn6"]},
+            {"id": 34, "fd": 20, "ip": "123.212.213.86", "abilities": ["Fn1", "Fn2", "Fn3", "Fn4"]},
+            {"id": 38, "fd": 23, "ip": "123.212.213.87", "abilities": ["Fn5", "Fn7", "Fn6", "Fn8"]},
+            {"id": 35, "fd": 65, "ip": "123.212.213.88", "abilities": ["Fn9", "Fn7", "Fn2", "Fn8"]}
+        ]
+    },
+    {
+        "addr": "213.14.97.74:1234",
+        "name": "Server 3",
+        "up": false,
+        "error": "My error message"
+    }
+]

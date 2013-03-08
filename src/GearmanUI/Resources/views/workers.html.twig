@@ -1,0 +1,30 @@
+<div class="content">
+
+    <form class="form-inline">
+        <strong>Filters : </strong>
+        <input type="text" placeholder="Function" ng-model="search.abilities">
+        <input type="text" placeholder="Server name" ng-model="search.server">
+    </form>
+    <hr>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="info">
+                <th><a href="" ng-click="predicate = 'server'; reverse=!reverse">Server</a></th>
+                <th>Worker id</th>
+                <th><a href="" ng-click="predicate = 'ip'; reverse=!reverse">IP address</a></th>
+                <th>File descriptor</th>
+                <th>Functions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="worker in workers | filter:search | orderBy:predicate:reverse">
+                <td>{{ "{{ worker.server }}" }}</td>
+                <td>{{ "{{ worker.id }}" }}</td>
+                <td>{{ "{{ worker.ip }}" }}</td>
+                <td>{{ "{{ worker.fd }}" }}</td>
+                <td>{{ "{{ worker.abilities }}" }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

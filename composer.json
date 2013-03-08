@@ -1,0 +1,32 @@
+{
+    "name": "gaspaio/GearmanUI",
+    "keywords": ["gearman","silex"],
+    "description": "A simple silex based web interface to monitor a cluster of Gearman servers.",
+    "homepage": "TODO",
+    "license": "TODO",
+    "authors": [
+        {
+            "name": "Rodolfo Ripado",
+            "email": "ggaspaio@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "1.0.*@dev",
+        "twig/twig": ">=1.2.0,<2.0-dev",
+        "symfony/twig-bridge": "2.1.*",
+        "monolog/monolog": ">=1.0.0,<1.2-dev",
+        "symfony/monolog-bridge": "2.1.*",
+        "symfony/yaml": "2.1.*",
+        "alptis/net-gearman": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {"GearmanUI": "src/"}
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/gaspaio/net_gearman.git",
+            "branch": "master"
+        }
+    ]
+}

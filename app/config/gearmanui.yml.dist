@@ -1,0 +1,10 @@
+# The list of servers to monitor
+gearmanui.servers:
+    - name: "Localhost"
+      addr: "127.0.0.1:4730"
+
+# General settings.
+gearmanui.settings:
+    # Server info refresh interval, in seconds.
+    # The javascript UI will ajax the server every 'refresh_interval' seconds for new information.
+    refresh_interval: 5

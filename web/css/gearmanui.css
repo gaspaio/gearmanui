@@ -1,0 +1,45 @@
+html, body {
+    height: 100%
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+
+#wrap .container {
+    padding-top: 50px;
+}
+
+#logo {
+    margin: 20px 0 30px 10px;
+}
+
+#left-sidebar {
+    padding: 8px 0;
+    width: 218px;
+}
+
+#left-sidebar .nav {
+    font-size: 1.1em;
+}
+
+#left-sidebar .nav li {
+    line-height: 1.8em;
+}
+
+#push,
+#footer {
+    height: 60px;
+}
+
+#footer .container {
+    border-top: 1px solid #DDDDDD;
+    padding-top: 10px;
+}
+
+.copyright {
+    float: right;
+}

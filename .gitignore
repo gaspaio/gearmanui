@@ -1,0 +1,6 @@
+.idea
+composer.lock
+composer.phar
+app/logs
+app/config/gearmanui.yml
+vendor/

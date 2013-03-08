@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" ng-app="gearmanui">
+<head>
+    <meta charset="utf-8">
+    <title>Gearman UI</title>
+    <link rel="stylesheet" href="{{ app.request.baseurl }}bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ app.request.baseurl }}css/gearmanui.css">
+    <script src="{{ app.request.baseurl }}js/angular.js"></script>
+    <script src="{{ app.request.baseurl }}js/angular-resource.js"></script>
+    <script src="{{ app.request.baseurl }}js/gearmanui.js"></script>
+    <script type="text/javascript">
+        // Inject configuration into gearmanui module.
+        gearmanui.value('GearmanSettings', {
+            refreshInterval: {{ settings.refresh_interval | default(5) }}
+        });
+    </script>
+</head>
+<body>
+<div id="wrap">
+<div class="container">
+    <div class="row">
+        <div id="left-sidebar" class="span3  well">
+            <div id="logo">
+                <img src="{{ app.request.baseurl }}img/gearmanLogoSmall.png">
+            </div>
+            <ul class="nav nav-list" ng-controller="NavigationCtrl">
+                <li ng-class="getClass('/status')"><a href="#/status">Job queue</a></li>
+                <li ng-class="getClass('/workers')"><a href="#/workers">Workers</a></li>
+                <li ng-class="getClass('/servers')"><a href="#/servers">Servers' status </a></li>
+            </ul>
+        </div>
+        <div class="span9" ng-controller="InfoCtrl">
+            <div class="error-container">
+                <div class="alert alert-error" ng-repeat="error in errors">
+                    {{ "{{ error }}" }}
+                </div>
+            </div>
+            <div ng-view></div>
+        </div>
+    </div>
+    <div id="push"></div>
+</div>
+</div>
+<div id="footer">
+    <div class="container">
+        <strong>Gearman UI</strong> is proudly powered by
+        <a href="http://silex.sensiolabs.org/">Silex</a>,
+        <a href="http://angularjs.org" target="_blank">Angular.js</a>,
+        and <a href="http://twitter.github.com/bootstrap" target="_blank">Twitter Bootstrap</a>.
+        <div class="copyright">© 2013 Rodolfo Ripado</div>
+    </div>
+</div>
+
+</body>
+</html>

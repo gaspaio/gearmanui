@@ -1,0 +1,30 @@
+<div class="content">
+
+    <form class="form-inline">
+        <strong>Filters : </strong>
+        <input type="text" placeholder="Function" ng-model="search.function">
+        <input type="text" placeholder="Server name" ng-model="search.server">
+    </form>
+    <hr>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="info">
+                <th><a href="" ng-click="predicate = 'function'; reverse=!reverse">Function</a></th>
+                <th><a href="" ng-click="predicate = 'server'; reverse=!reverse">Server</a></th>
+                <th><a href="" ng-click="predicate = 'queued'; reverse=!reverse">Queued jobs</a></th>
+                <th><a href="" ng-click="predicate = 'running'; reverse=!reverse">Running jobs</a></th>
+                <th><a href="" ng-click="predicate = 'workers'; reverse=!reverse">Available workers</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in status | filter:search | orderBy:predicate:reverse">
+                <td>{{ "{{ item.function }}" }}</td>
+                <td>{{ "{{ item.server }}" }}</td>
+                <td>{{ "{{ item.queued }}" }}</td>
+                <td>{{ "{{ item.running }}" }}</td>
+                <td>{{ "{{ item.workers }}" }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
