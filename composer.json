@@ -2,15 +2,18 @@
     "name": "gaspaio/GearmanUI",
     "keywords": ["gearman","silex"],
     "description": "A simple silex based web interface to monitor a cluster of Gearman servers.",
-    "homepage": "TODO",
-    "license": "TODO",
+    "homepage": "http://gaspaio.github.com/gearmanui",
+    "version": "1.0.0-RC1",
+    "license": "MIT",
     "authors": [
         {
             "name": "Rodolfo Ripado",
-            "email": "ggaspaio@gmail.com"
+            "email": "ggaspaio@gmail.com",
+            "homepage": "http://github.com/gaspaio" 
         }
     ],
     "require": {
+        "php": ">=5.3.0",
         "silex/silex": "1.0.*@dev",
         "twig/twig": ">=1.2.0,<2.0-dev",
         "symfony/twig-bridge": "2.1.*",

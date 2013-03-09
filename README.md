@@ -1,2 +1,1 @@
-[![Build Status](https://travis-ci.org/gaspaio/gearmanui.png)](https://travis-ci.org/gaspaio/gearmanui)
-
+[![Build Status](https://travis-ci.org/gaspaio/gearmanui.png?branch=master)](https://travis-ci.org/gaspaio/gearmanui)
