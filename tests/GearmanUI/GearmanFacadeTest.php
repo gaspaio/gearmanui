@@ -59,28 +59,28 @@ class GearmanFacadeTest extends \PHPUnit_Framework_TestCase
 
     public function testGetServerInfoDataFetchFailed() {
 
-        $managerFactory = function ($server_addr) {
-            $mg = $this->getMock(
-                '\Net_Gearman_Manager',
-                array('version', 'workers', 'status'),
-                array('server addr'),
-                '',
-                false
-            );
+        $manager_mock = $this->getMock(
+            '\Net_Gearman_Manager',
+            array('version', 'workers', 'status'),
+            array('server addr'),
+            '',
+            false
+        );
 
-            $mg->expects($this->any())
-                ->method('version')
-                ->will($this->throwException(new \Exception("DataFetchError")));
+        $manager_mock->expects($this->any())
+            ->method('version')
+            ->will($this->throwException(new \Exception("DataFetchError")));
 
-            $mg->expects($this->any())
-                ->method('workers')
-                ->will($this->returnValue("workers_array"));
+        $manager_mock->expects($this->any())
+            ->method('workers')
+            ->will($this->returnValue("workers_array"));
 
-            $mg->expects($this->any())
-                ->method('status')
-                ->will($this->returnValue("status_array"));
+        $manager_mock->expects($this->any())
+            ->method('status')
+            ->will($this->returnValue("status_array"));
 
-            return $mg;
+        $managerFactory = function ($server_addr) use($manager_mock) {
+            return $manager_mock;
         };
 
         $gearmanFacade = new GearmanFacade(array(), $managerFactory, $this->logger);
@@ -99,28 +99,28 @@ class GearmanFacadeTest extends \PHPUnit_Framework_TestCase
 
     public function testGetServerInfoDataFetchSuccess() {
 
-        $managerFactory = function ($server_addr) {
-            $mg = $this->getMock(
-                '\Net_Gearman_Manager',
-                array('version', 'workers', 'status'),
-                array('server addr'),
-                '',
-                false
-            );
+        $manager_mock = $this->getMock(
+            '\Net_Gearman_Manager',
+            array('version', 'workers', 'status'),
+            array('server addr'),
+            '',
+            false
+        );
 
-            $mg->expects($this->any())
-                ->method('version')
-                ->will($this->returnValue("workers_array"));
+        $manager_mock->expects($this->any())
+            ->method('version')
+            ->will($this->returnValue("workers_array"));
 
-            $mg->expects($this->any())
-                ->method('workers')
-                ->will($this->returnValue("workers_array"));
+        $manager_mock->expects($this->any())
+            ->method('workers')
+            ->will($this->returnValue("workers_array"));
 
-            $mg->expects($this->any())
-                ->method('status')
-                ->will($this->returnValue("status_array"));
+        $manager_mock->expects($this->any())
+            ->method('status')
+            ->will($this->returnValue("status_array"));
 
-            return $mg;
+        $managerFactory = function ($server_addr) use($manager_mock) {
+            return $manager_mock;
         };
 
         $gearmanFacade = new GearmanFacade(array(), $managerFactory, $this->logger);
