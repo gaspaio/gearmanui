@@ -1,0 +1,13 @@
+header h1 {
+    color: #474747;
+    font-weight: bold;
+}
+
+header h1 img {
+    float: left;
+    margin-right: 5px;
+}
+
+header .screenshot img {
+    border: 1px solid #c6c6c6;
+}

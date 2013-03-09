@@ -1,1 +1,123 @@
-My GitHub Page
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Gearman UI | A PHP web interface to monitor Gearman Servers</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/gearmanui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body><div class="wrapper">
+    <header>
+        <h1><img src="images/gearman.png" alt="Gearman Logo">Gearman UI</h1>
+        <p>A PHP web interface for monitoring Gearman Servers.</p>
+        <p class="view"><a href="http://github.com/gaspaio/gearmanui">View the Project on GitHub <small>gaspaio/gearmanui</small></a></p>
+        <ul>
+              <li><a href="https://github.com/gaspaio/gearmanui/zipball/master">Download <strong>ZIP File</strong></a></li>
+              <li><a href="https://github.com/gaspaio/gearmanui/tarball/master">Download <strong>TAR Ball</strong></a></li>
+              <li><a href="http://github.com/gaspaio/gearmanui">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+        <div class="screenshot">
+            <img src="images/gearmanscreenshot.png" alt="GearmanUI Screenshot" />
+        </div>
+    </header>
+
+    <section>
+        <p><strong>Gearman UI</strong> is small a PHP application providing a minimal monitoring dashboard for a cluster of
+            <a href="http://gearman.org" target="_blank">Gearman Job Servers.</a>
+        </p>
+        <p>
+            It pings the registered Gearman servers for information on a fixed timeout, using the admin Gearman API
+            and a slightly modified version of the PEAR extension <a href="http://pear.php.net/package/Net_Gearman" target="_blank">Net_Gearman</a>.
+        </p>
+        <p>
+            It is built on <a href="http://silex.sensiolabs.org/" target="_blank">Silex</a> and
+            <a href="http://angularjs.org/" target="_blank">AngularJS</a> to provide a solid,
+            extensible and fast way to visually follow the activity of your job queues.
+        </p>
+    </section>
+
+    <section>
+        <h1>Running Gearman UI</h1>
+        <p>Getting it to run on your server should be easy but it does involve a little bit more that just downloading a php file.</p>
+        <h2>Installation</h2>
+        <ul>
+            <li>
+                <p>Download and install <strong><a href="http://getcomposer.org/" target="_blank">Composer</a></strong>.
+                Detailed installation instructions on Unix based or Windows systems are available <a href="http://getcomposer.org/doc/00-intro.md#installation-nix">here</a>.</p>
+            </li>
+            <li>
+                <p>Clone the <a href="https://github.com/gaspaio/gearmanui">Gearman UI repository</a> :</p>
+                <pre><code>git clone git@github.com:gaspaio/gearmanui.git gearman-ui</code></pre>
+            </li>
+            <li>
+                <p>Install the application dependencies throught <a href="http://getcomposer.org/" target="_blank">Composer</a> :</p>
+<pre><code>cd gearman-ui
+composer install
+</code></pre>
+            </li>
+            <li>
+                <p>Make the directory <code>/web</code> available through a web server and make sure your web server has write permissions on the log directory <code>/app/logs</code>.</p>
+            </li>
+        </ul>
+        <p>Then, set up the configuration file.</p>
+        <h2>Configuration</h2>
+        <ul>
+            <li><p>Setup the <em>YAML</em> configuration file :</p>
+                <pre><code> cp /app/config/gearmanui.yml.dist app/config/gearmanui.yml</code></pre>
+            </li>
+            <li>
+                <p>Modify configuration parameters to fit your needs. The defaulf config file should be self explanatory :</p>
+                <div class="highlight">
+<pre><code>
+<span class="c"># The list of servers to monitor.</span>
+<span class="nb">gearmanui.servers:</span>
+- name: "Localhost"
+  addr: "127.0.0.1:4730"
+
+<span class="nb">gearmanui.settings:</span>
+<span class="c"># The javascript will ajax the server every
+# 'refresh_interval' seconds for new information.</span>
+  refresh_interval: 5
+
+<span class="c"># By default, only log errors. Check \Monolog\Logger for valid values.</span>
+<span class="nb">monolog.level:</span> 400
+</code></pre>
+                </div>
+            </li>
+        </ul>
+        <p>That's it, you should be able to access Gearman UI on your web browser.</p>
+    </section>
+
+    <section>
+        <h1>Contributing to the projet</h1>
+        <p> Gearman UI is still in its early stages. For the moment, it suits my needs. 
+            If you find some bugs or comme up with some usefull feature requests, 
+            let me known through the <a href="https://github.com/gaspaio/gearmanui/issues" target="_blank">project issue queue</a>.</p>
+        <p>Pull requests with corrections or new features implementations are
+           obviously very very welcome.</p>
+    </section>
+
+    <section>
+        <h1>Gearman links</h1>
+        <p>Quite a lot of documentation on Gearman exists. If you need <strong>Gearman UI</strong> you surelly know
+            <a href="http://gearman.org/documentation" target="_blank">most of it</a>.</p>
+        <p>
+            <strong>Gearman UI</strong> was inspired by an older UI projet,
+            and shares the same basic features : <a href="https://github.com/yugene/Gearman-Monitor" target="_blank">Gearman Monitor</a>.
+        </p>
+    </section>
+
+    <footer>
+        <p>This project is maintained by <a href="http://github.com/gaspaio">Rodolfo Ripado</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+</body>
+</html>
