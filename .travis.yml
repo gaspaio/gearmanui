@@ -7,5 +7,6 @@ php:
 
 before_script:
   - composer install
+  - cp app/config/gearmanui.yml.dist app/config/gearmanui.yml
 
 script: phpunit -c app --coverage-text

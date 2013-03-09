@@ -6,15 +6,14 @@ use Silex\Application,
     Monolog\Logger,
     Silex\Provider\ServiceControllerServiceProvider,
     Silex\Provider\TwigServiceProvider,
-    Silex\Provider\MonologServiceProvider,
-    Symfony\Component\Yaml\Yaml;
+    Silex\Provider\MonologServiceProvider;
 
 class GearmanUIApplication extends Application
 {
     public function __construct(array $values = array())
     {
-        $config = Yaml::parse(__DIR__ . '/../../app/config/gearmanui.yml');
-        parent::__construct(array_merge($values, $config));
+
+        parent::__construct($values);
 
         // TODO Allow config to overwrite monolog config
         $this->register(new MonologServiceProvider, array(
@@ -29,6 +28,8 @@ class GearmanUIApplication extends Application
         ));
 
         $this->register(new GearmanFacadeProvider());
+
+        $this->register(new ConfigurationProvider());
 
         $this->register(new ControllerProvider());
      }
