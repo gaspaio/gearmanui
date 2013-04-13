@@ -1,9 +1,8 @@
 {
-    "name": "gaspaio/GearmanUI",
+    "name": "gaspaio/gearmanui",
     "keywords": ["gearman","silex"],
     "description": "A simple silex based web interface to monitor a cluster of Gearman servers.",
     "homepage": "http://www.rripado.info/gearmanui/",
-    "version": "1.0.0-RC1",
     "license": "MIT",
     "authors": [
         {
