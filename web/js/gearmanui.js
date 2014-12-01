@@ -103,9 +103,9 @@ var gearmanui = angular.module('gearmanui', ['ngResource'])
                 for (f in element.status) {
                     statusTable[counter++] = {
                         function: f,
-                        queued: element.status[f].in_queue,
-                        running: element.status[f].jobs_running,
-                        workers: element.status[f].capable_workers,
+                        queued: parseInt(element.status[f].in_queue, 10),
+                        running: parseInt(element.status[f].jobs_running, 10),
+                        workers: parseInt(element.status[f].capable_workers, 10),
                         server: element.name
                     }
                 }
