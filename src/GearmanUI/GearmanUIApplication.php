@@ -11,24 +11,38 @@
 
 namespace GearmanUI;
 
-use Silex\Application,
-    Monolog\Logger,
+use Monolog\Logger,
+    Monolog\Handler\NullHandler,
+    Silex\Application,
     Silex\Provider\ServiceControllerServiceProvider,
     Silex\Provider\TwigServiceProvider,
     Silex\Provider\MonologServiceProvider;
 
 class GearmanUIApplication extends Application
 {
+    use Application\TwigTrait;
+
+    const DEFAULT_LOG_FILE = '/../../logs/gearmanui.log';
+
     public function __construct(array $values = array())
     {
-
         parent::__construct($values);
 
-        // TODO Allow config to overwrite monolog config
+        # Set run env
+        $this['env'] = getenv('APP_ENV') ?: 'prod';
+
+        # Monolog service
+        # In test env, do not log.
         $this->register(new MonologServiceProvider, array(
-            'monolog.logfile' => __DIR__.'/../../app/logs/gearmanui.log',
+            'monolog.logfile' => __DIR__ . static::DEFAULT_LOG_FILE,
             'monolog.name' => 'GearmanUI'
         ));
+
+        if ('test' === $this['env']) {
+            $this['monolog.handler'] = function () {
+                return new NullHandler();
+            };
+        }
 
         $this->register(new ServiceControllerServiceProvider);
 

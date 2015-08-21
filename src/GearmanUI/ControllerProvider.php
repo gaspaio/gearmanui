@@ -20,19 +20,19 @@ class ControllerProvider implements ServiceProviderInterface {
 
     public function register(Application $app) {
         $app->get('/', function() use ($app) {
-            return $app['twig']->render('index.html.twig', array('settings' => $app['gearmanui.settings']));
+            return $app->renderView('index.html.twig', array('settings' => $app['gearmanui.settings']));
         });
 
         $app->get('/status', function() use ($app) {
-            return $app['twig']->render('status.html.twig');
+            return $app->renderView('status.html.twig');
         });
 
         $app->get('/workers', function() use ($app) {
-            return $app['twig']->render('workers.html.twig');
+            return $app->renderView('workers.html.twig');
         });
 
         $app->get('/servers', function() use ($app) {
-            return $app['twig']->render('servers.html.twig');
+            return $app->renderView('servers.html.twig');
         });
 
         $app->get('/info', function(Request $request) use ($app) {
@@ -42,8 +42,8 @@ class ControllerProvider implements ServiceProviderInterface {
             }
 
             $info = $app['gearman.serverInfo']->getServersInfo();
-            return new JsonResponse($info);
-            //return $app['twig']->render('gearman.json.twig');
+            //return new JsonResponse($info);
+            return $app->renderView('gearman.json.twig');
         });
     }
 

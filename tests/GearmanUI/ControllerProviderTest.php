@@ -13,7 +13,7 @@ namespace GearmanUI;
 
 use Silex\Application,
     Symfony\Component\HttpFoundation\Request,
-        Symfony\Component\HttpFoundation\Response;
+    Symfony\Component\HttpFoundation\Response;
 
 class ControllerProviderTest extends \PHPUnit_Framework_TestCase
 {
