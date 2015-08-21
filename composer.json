@@ -1,6 +1,6 @@
 {
     "name": "gaspaio/gearmanui",
-    "keywords": ["gearman","silex"],
+    "keywords": ["gearman","silex","angular","jobqueue","taskqueue","job","task"],
     "description": "A simple silex based web interface to monitor a cluster of Gearman servers.",
     "homepage": "http://www.rripado.info/gearmanui/",
     "license": "MIT",

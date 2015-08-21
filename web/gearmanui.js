@@ -2,7 +2,7 @@
  * Configure services
  */
 
-var gearmanui = angular.module('gearmanui', ['ngResource'])
+var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
 
     // Configure routes
     .config(['$routeProvider', function($routeProvider) {
@@ -10,7 +10,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource'])
             .when('/status', {templateUrl:'status'})
             .when('/workers', {templateUrl:'workers'})
             .when('/servers', {templateUrl:'servers'})
-            .otherwise({redirectTo:'/status'})
+            .otherwise({redirectTo:'/status'});
     }])
 
     // Service : Gearman info callback
@@ -82,7 +82,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource'])
                             ip: element.workers[i].ip,
                             abilities: element.workers[i].abilities.join(', '),
                             server: element.name
-                        }
+                        };
                     }
                 }
             });
@@ -107,7 +107,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource'])
                         running: parseInt(element.status[f].jobs_running, 10),
                         workers: parseInt(element.status[f].capable_workers, 10),
                         server: element.name
-                    }
+                    };
                 }
             });
 
@@ -125,13 +125,20 @@ var gearmanui = angular.module('gearmanui', ['ngResource'])
         return wrapper;
     });
 
-
 /*
  * Controllers
- *
  */
-function InfoCtrl($scope, GearmanSettings, GearmanInfo, GearmanInfoHandler, GearmanErrorHandler) {
+gearmanui.controller('NavigationCtrl', function($scope, $location) {
+    $scope.getClass = function(path) {
+        if ($location.path().substr(0, path.length) == path) {
+            return "active";
+        } else {
+            return "";
+        }
+    };
+});
 
+gearmanui.controller('InfoCtrl', function($scope, GearmanSettings, GearmanInfo, GearmanInfoHandler, GearmanErrorHandler) {
     /*
      * TODO Handle communication errors.
      */
@@ -147,16 +154,4 @@ function InfoCtrl($scope, GearmanSettings, GearmanInfo, GearmanInfoHandler, Gear
 
     window.setInterval(setInfo, GearmanSettings.refreshInterval * 1000);
     setInfo();
-}
-
-
-function NavigationCtrl($scope, $location) {
-    // Set menu active class for the current URL
-    $scope.getClass = function(path) {
-        if ($location.path().substr(0, path.length) == path) {
-            return "active"
-        } else {
-            return ""
-        }
-    }
-}
+});

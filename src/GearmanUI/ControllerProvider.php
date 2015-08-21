@@ -37,13 +37,9 @@ class ControllerProvider implements ServiceProviderInterface {
 
         $app->get('/info', function(Request $request) use ($app) {
 
-            if (!$request->isXmlHttpRequest()) {
-                $app->abort(404, "Page not found");
-            }
-
             $info = $app['gearman.serverInfo']->getServersInfo();
-            //return new JsonResponse($info);
-            return $app->renderView('gearman.json.twig');
+            return new JsonResponse($info);
+            // return $app->renderView('gearman.json.twig');
         });
     }
 
