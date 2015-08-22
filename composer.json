@@ -19,7 +19,7 @@
         "monolog/monolog": "~1.16",
         "symfony/monolog-bridge": "~2.7",
         "symfony/yaml": "~2.7",
-        "alptis/net-gearman": "dev-master"
+        "alptis/net-gearman": "~1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.8"
