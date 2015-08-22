@@ -48,33 +48,31 @@
         <h2>Installation</h2>
         <ul>
             <li>
-                <p>Download and install <strong><a href="http://getcomposer.org/" target="_blank">Composer</a></strong>.
+                <p>Download and install <strong><a href="http://getcomposer.org" target="_blank">Composer</a></strong>.
                 Detailed installation instructions on Unix based or Windows systems is available <a href="http://getcomposer.org/doc/00-intro.md#installation-nix">here</a>.</p>
             </li>
             <li>
-                <p>Clone the <a href="https://github.com/gaspaio/gearmanui">Gearman UI repository</a> :</p>
+                <p>Download and install <strong><a href="http://http://bower.io" target="_blank">Bower</a></strong>.
+                Detailed installation instructions on Unix based or Windows systems is available <a href="http://bower.io/#install-bower">here</a>.</p>
+            </li>
+            <li>
+                <p>Clone the <a href="https://github.com/gaspaio/gearmanui">Gearman UI repository</a>:</p>
                 <pre><code>git clone git://github.com/gaspaio/gearmanui.git gearman-ui</code></pre>
             </li>
             <li>
-                <p>Install the application dependencies throught <a href="http://getcomposer.org/" target="_blank">Composer</a> :</p>
+                <p>Install the application PHP dependencies throught <a href="http://getcomposer.org/" target="_blank">Composer</a> :</p>
 <pre><code>cd gearman-ui
-composer install
+composer install --no-dev
 </code></pre>
             </li>
             <li>
-                <p>Make the directory <code>/web</code> available through a web server and make sure your web server has write permissions on the log directory <code>/app/logs</code>.</p>
+                <p>Install client-side dependencies throught <a href="http://http://bower.io" target="_blank">Bower</a>:</p>
+<pre><code>bower install
+</code></pre>
             </li>
             <li>
-                <p>Activate URL rewriting for your webserver. Detailed instructions for different webservers are available on the <a href="http://silex.sensiolabs.org/doc/web_servers.html" target="_blank">Silex website</a>.</p>
-            </li>
-        </ul>
-        <p>Then, set up the configuration file.</p>
-        <h2>Configuration</h2>
-        <ul>
-            <li><p>Setup the <em>YAML</em> configuration file :</p>
-                <pre><code> cp /app/config/gearmanui.yml.dist app/config/gearmanui.yml</code></pre>
-            </li>
-            <li>
+                <p>Set up the <em>YAML</em> configuration file :</p>
+                <pre><code> cp config.yml.dist config.yml</code></pre>
                 <p>Modify the configuration parameters to fit your needs. The defaulf config file should be self explanatory :</p>
                 <div class="highlight">
 <pre><code>
@@ -88,10 +86,22 @@ composer install
 # 'refresh_interval' seconds for new information.</span>
   refresh_interval: 5
 
-<span class="c"># By default, only log errors. Check \Monolog\Logger for valid values.</span>
-<span class="nb">monolog.level:</span> 400
+<span class="c"># Log file.</span>
+<span class="c"># The default location is "APP_DIR/logs/gearmanui.log".</span>
+<span class="c"># Uncomment to set a custom location for the log file.</span>
+<span class="c"># monolog.logfile: "/var/log/gearmanui.log"</span>
+
+<span class="c"># Logger level.</span>
+<span class="c"># Valid values: error, warning, notice, info, debug.</span>
+<span class="nb">monolog.level:</span> "error"
 </code></pre>
                 </div>
+            </li>
+            <li>
+                <p>Configure the web server to serve the application directory, with URL rewriting. Detailed instructions for different webservers are available on the <a href="http://silex.sensiolabs.org/doc/web_servers.html" target="_blank">Silex website</a>.</p>
+            </li>
+            <li>
+                <p>Make sure your web server has write permissions on the log directory. By default, the file is located in the <code>logs</code> directory, at the root of the application.</p>
             </li>
         </ul>
         <p>That's it, you should be able to access Gearman UI on your web browser.</p>
@@ -99,11 +109,9 @@ composer install
 
     <section>
         <h1>Contributing to the projet</h1>
-        <p> Gearman UI is still in its early stages. For the moment it suits my needs. 
-            If you find bugs or comme up with some useful feature requests, 
+        <p> If you find bugs or comme up with some useful feature requests,
             let me know through the <a href="https://github.com/gaspaio/gearmanui/issues" target="_blank">project issue queue</a>.</p>
-        <p>Pull requests with corrections or new features are
-           obviously very very welcome.</p>
+        <p>Pull requests with corrections or new features are obviously very very welcome.</p>
     </section>
 
     <section>
