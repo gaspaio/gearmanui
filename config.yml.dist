@@ -10,6 +10,7 @@ gearmanui.settings:
     refresh_interval: 5
 
 # Log file.
+# The default location is "APP_DIR/logs/gearmanui.log".
 # Uncomment to set a custom location for the log file.
 # monolog.logfile: "/var/log/gearmanui.log"
 
