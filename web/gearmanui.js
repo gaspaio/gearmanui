@@ -5,7 +5,7 @@
 var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
 
     // Configure routes
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/status', {templateUrl:'status'})
             .when('/workers', {templateUrl:'workers'})
@@ -14,19 +14,19 @@ var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
     }])
 
     // Service : Gearman info callback
-    .factory('GearmanInfo', function($resource) {
+    .factory('GearmanInfo', function ($resource) {
         return $resource('info', {});
     })
 
     // Service : Handle server errors
-    .factory('GearmanErrorHandler', function() {
+    .factory('GearmanErrorHandler', function () {
 
         var wrapper = {};
 
-        wrapper.get = function(data) {
+        wrapper.get = function (data) {
             var errors = [];
 
-            data.forEach(function(element, index, array) {
+            data.forEach(function (element, index, array) {
                 if ('error' in element) {
                     errors.push(element.error);
                 }
@@ -40,14 +40,14 @@ var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
     })
 
     // Service : Transfort server incomming data info model tables.
-    .factory('GearmanInfoHandler', function() {
+    .factory('GearmanInfoHandler', function () {
 
         var wrapper = {};
 
         // Servers Table
         wrapper.servers = function(data) {
             var serversTable = [];
-            data.forEach(function(element, index, array) {
+            data.forEach(function (element, index, array) {
                 serversTable[index] = {
                     name: element.name,
                     addr: element.addr,
@@ -63,7 +63,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
                 serversTable[index].rowClass = element.up ? '' : 'error';
             });
 
-            return serversTable.sort(function(s1, s2) {
+            return serversTable.sort(function (s1, s2) {
                 return s1.name.localeCompare(s2);
             });
         };
@@ -73,7 +73,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
             var counter = 0;
             var workersTable = [];
 
-            data.forEach(function(element, index, array) {
+            data.forEach(function (element, index, array) {
                 if (element.up && 'workers' in element) {
                     for (var i=0 ; i < element.workers.length ; i++) {
                         workersTable[counter++] = {
@@ -99,7 +99,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
             var counter = 0;
             var statusTable = [];
 
-            data.forEach(function(element, index, array) {
+            data.forEach(function (element, index, array) {
                 for (f in element.status) {
                     statusTable[counter++] = {
                         function: f,
@@ -129,7 +129,7 @@ var gearmanui = angular.module('gearmanui', ['ngResource', 'ngRoute'])
  * Controllers
  */
 gearmanui.controller('NavigationCtrl', function($scope, $location) {
-    $scope.getClass = function(path) {
+    $scope.getClass = function (path) {
         if ($location.path().substr(0, path.length) == path) {
             return "active";
         } else {
@@ -143,12 +143,17 @@ gearmanui.controller('InfoCtrl', function($scope, GearmanSettings, GearmanInfo, 
      * TODO Handle communication errors.
      */
     function setInfo() {
-        GearmanInfo.query(function(data) {
+        GearmanInfo.query(function (data) {
             // Update model with the massaged data.
             $scope.errors = GearmanErrorHandler.get(data);
             $scope.status = GearmanInfoHandler.status(data);
             $scope.workers = GearmanInfoHandler.workers(data);
             $scope.servers = GearmanInfoHandler.servers(data);
+        }, function (err) {
+            // Handle server errors
+            $scope.errors = GearmanErrorHandler.get(
+                [{'error': "Server Error while accessing URL '/info': "+ err.status + " - " + err.statusText}]
+            );
         });
     }
 
