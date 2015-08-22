@@ -33,15 +33,9 @@ class ControllerProviderTest extends \PHPUnit_Framework_TestCase
      */
     public function testJSONRoutes($url) {
         $app = $this->getApplication();
-
+        $app['gearmanui.servers'] = array();
         // Test Error condition: all json calls should be via ajax
         $request = Request::create($url);
-        $response = $app->handle($request);
-        $this->assertEquals('404', $response->getStatusCode());
-
-        $request = Request::create($url);
-        $request->headers->set('X-Requested-With', 'XMLHttpRequest');
-        $app['gearmanui.servers'] = array();
         $response = $app->handle($request);
         $this->assertEquals('200', $response->getStatusCode());
     }
