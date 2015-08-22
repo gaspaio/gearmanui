@@ -9,5 +9,14 @@ gearmanui.settings:
     # The javascript will ajax the server every 'refresh_interval' seconds for new information.
     refresh_interval: 5
 
-# By default, only log errors. Check \Monolog\Logger for valid values.
-monolog.level: 400
+# Log file.
+# The default location is "APP_DIR/logs/gearmanui.log".
+# Uncomment to set a custom location for the log file.
+# monolog.logfile: "/var/log/gearmanui.log"
+
+# Logger level.
+# Valid values: error, warning, notice, info, debug.
+monolog.level: "error"
+
+
+

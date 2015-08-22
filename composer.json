@@ -1,28 +1,31 @@
 {
     "name": "gaspaio/gearmanui",
-    "keywords": ["gearman","silex"],
+    "keywords": ["gearman","silex","angular","jobqueue","taskqueue","job","task"],
     "description": "A simple silex based web interface to monitor a cluster of Gearman servers.",
-    "homepage": "http://www.rripado.info/gearmanui/",
+    "homepage": "http://gaspaio.github.io/gearmanui",
     "license": "MIT",
     "authors": [
         {
             "name": "Rodolfo Ripado",
             "email": "ggaspaio@gmail.com",
-            "homepage": "http://github.com/gaspaio" 
+            "homepage": "http://github.com/gaspaio"
         }
     ],
     "require": {
-        "php": ">=5.3.0",
-        "silex/silex": "1.0.*@dev",
-        "twig/twig": ">=1.2.0,<2.0-dev",
-        "symfony/twig-bridge": "2.1.*",
-        "monolog/monolog": ">=1.0.0,<1.2-dev",
-        "symfony/monolog-bridge": "2.1.*",
-        "symfony/yaml": "2.1.*",
+        "php": ">=5.4",
+        "silex/silex": "~1.3",
+        "twig/twig": "~1.20",
+        "symfony/twig-bridge": "~2.7",
+        "monolog/monolog": "~1.16",
+        "symfony/monolog-bridge": "~2.7",
+        "symfony/yaml": "~2.7",
         "alptis/net-gearman": "dev-master"
     },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    },
     "autoload": {
-        "psr-0": {"GearmanUI": "src/"}
+        "psr-4": {"GearmanUI\\": "src/GearmanUI"}
     },
     "repositories": [
         {
@@ -30,5 +33,8 @@
             "url": "https://github.com/gaspaio/net_gearman.git",
             "branch": "master"
         }
-    ]
+    ],
+    "scripts": {
+        "test": "phpunit"
+    }
 }

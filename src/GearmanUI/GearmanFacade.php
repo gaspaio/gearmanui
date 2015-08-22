@@ -65,7 +65,7 @@ class GearmanFacade
             $server['up'] = true;
         }
         catch (\Exception $e) {
-            $server['error'] = $this->serverErrorHandler($e, $server['name'], self::MANAGER_ERROR_CONNECT);
+            $server['error'] = $this->serverErrorHandler($e, $server['name'], static::MANAGER_ERROR_CONNECT);
             $server['up'] = false;
         }
 
@@ -77,7 +77,7 @@ class GearmanFacade
                 $manager->disconnect();
             }
             catch (\Exception $e) {
-                $server['error'] = $this->serverErrorHandler($e, $server['name'], self::MANAGER_ERROR_DATA);
+                $server['error'] = $this->serverErrorHandler($e, $server['name'], static::MANAGER_ERROR_DATA);
             }
         }
 

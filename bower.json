@@ -1,0 +1,23 @@
+{
+  "name": "GearmanUI",
+  "version": "2.0.0",
+  "homepage": "http://gaspaio.github.io/gearmanui",
+  "authors": [
+    "Gaspaio <ggaspaio@gmail.com>"
+  ],
+  "description": "An Silex-based GUI for gearman",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "vendor",
+    "web/vendor",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css-only": "~3.3.5",
+    "angular": "~1.4.4",
+    "angular-resource": "~1.4.4",
+    "angular-route": "~1.4.4"
+  }
+}
