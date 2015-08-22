@@ -1,19 +1,17 @@
 {
   "name": "GearmanUI",
   "version": "2.0.0",
-  "homepage": "https://github.com/gaspaio/gearmanui",
+  "homepage": "http://gaspaio.github.io/gearmanui",
   "authors": [
     "Gaspaio <ggaspaio@gmail.com>"
   ],
   "description": "An Silex-based GUI for gearman",
-  "main": "web/index.php",
   "license": "MIT",
   "private": true,
   "ignore": [
     "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
+    "vendor",
+    "web/vendor",
     "tests"
   ],
   "dependencies": {
